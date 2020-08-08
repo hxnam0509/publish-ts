@@ -1,4 +1,6 @@
 import * as pluralize from 'pluralize';
+import { isNull } from './util';
+import Meta from 'meta';
 
 /**
  * @Method: Returns the plural form of any noun.
@@ -6,7 +8,7 @@ import * as pluralize from 'pluralize';
  * @Return {string}
  */
 export function getPlural(str: Props) {
-    if (!str) {
+    if (!Meta.get('supportedPlural') || isNull(str)) {
         return null;
     }
     return pluralize.plural(str.status.toString());
@@ -15,5 +17,5 @@ export function getPlural(str: Props) {
 type DataProvider<T> =
     | { status: string }
     | { status: number, error: T };
-type Props = DataProvider<number>;
+ type Props = DataProvider<number>;
 

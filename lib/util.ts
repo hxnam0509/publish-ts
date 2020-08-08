@@ -1,3 +1,3 @@
-export function checkNull(str:any) {
-
+export function isNull(...str:any[]) {
+    return str === null;
 }
